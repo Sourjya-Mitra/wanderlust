@@ -1,0 +1,38 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row"><div class="col-8 offset-2">
+    <br><br>
+    <h3>create new place</h3>
+    <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3"><label for="title" class="form-label">title</label>
+        <input type="text" placeholder="title" id="title" name="listing[title]" class="form-control" required>
+        <div class="valid-feedback">Title looks good!</div>
+        <div class="invalid-feedback">Please provide a valid title.</div></div>
+        <div class="mb-3"><label for="description" class="form-label">description</label>
+        <textarea id="description" name="listing[description]" class="form-control" required></textarea>
+        <div class="valid-feedback">description looks good!</div>
+        <div class="invalid-feedback">Please provide a valid description.</div></div>
+            <div class="mb-3"><label for="image" class="form-label">image</label>
+                <input type="file" id="image" name="listing[image]" class="form-control"></div>
+            <div class="row">
+            <div class="col-md-4"><div class="mb-3"><label for="price" class="form-label">price</label>
+            <input type="number" placeholder="price" id="price" name="listing[price]" class="form-control" required></div>
+            <div class="valid-feedback">price looks good!</div>
+        <div class="invalid-feedback">Please provide a valid pricee.</div></div>
+            <div class="col-md-8"><div class="mb-3"><label for="country" class="form-label">country</label>
+            <input type="text" placeholder="country" id="country" name="listing[country]" class="form-control" required></div>
+            <div class="valid-feedback">country looks good!</div>
+        <div class="invalid-feedback">Please provide a valid country.</div></div>
+        </div>
+        <div class="mb-3"><label for="location" class="form-label">location</label>
+        <input type="text" placeholder="location" id="location" name="listing[location]" class="form-control" required>
+        <div class="valid-feedback">location looks good!</div>
+        <div class="invalid-feedback">Please provide a valid location.</div></div>
+        <button class="btn btn-dark add-btn">add</button>
+        <br><br>
+    </form>
+</div>
+</div>
+</body>
+
+ 
