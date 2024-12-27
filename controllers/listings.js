@@ -42,7 +42,7 @@ module.exports.createListing=async(req,res,next)=>{
          newListing.image={url,filename};
          newListing.geometry=response.body.features[0].geometry;
          let savedLising = await newListing.save();
-         console.log(savedLising);
+         console.log(savedLising); 
          req.flash("success","new listing created");
          res.redirect("/listings");
  };
@@ -64,4 +64,9 @@ module.exports.destroyListing=async(req,res)=>{
     console.log(deletedListing);
     req.flash("success","listing deleted successfully");
     res.redirect("/listings");
+};
+module.exports.showlistinggenre=async(req,res)=>{
+    let genre=req.query.genre;
+    let genreListing=await Listing.find({genre:genre});
+    res.render("/listings/genre.ejs",{genreListing});
 };

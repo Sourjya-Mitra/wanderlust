@@ -16,8 +16,10 @@ router
 .post(isLoggedIn,upload.single("listing[image]"),validateListing,wrapAsync(listingController.createListing));
 //new route
 router.get("/new",isLoggedIn,wrapAsync(listingController.renderNewForm));
+//genre route
+router.get("/by-genre", wrapAsync(listingController.showlistinggenre));
 router
-.route("/:id")
+.route("/:id") 
 .get(wrapAsync(listingController.showListings))
 .put(isLoggedIn,isOwner,upload.single("listing[image]"),validateListing,wrapAsync(listingController.updateListing))
 .delete(isLoggedIn,isOwner, wrapAsync(listingController.destroyListing));

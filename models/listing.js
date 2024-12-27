@@ -26,6 +26,9 @@ const listingSchema=new mongoose.Schema({
         type: String,
         required: true
     },
+    genre:{
+        type:String
+    },
     reviews:[
         {
         type: Schema.Types.ObjectId,
