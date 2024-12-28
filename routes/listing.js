@@ -18,6 +18,8 @@ router
 router.get("/new",isLoggedIn,wrapAsync(listingController.renderNewForm));
 //genre route
 router.get("/by-genre", wrapAsync(listingController.showlistinggenre));
+//search route
+router.get("/search",wrapAsync(listingController.showsearchlisting))
 router
 .route("/:id") 
 .get(wrapAsync(listingController.showListings))

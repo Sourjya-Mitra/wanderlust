@@ -3,7 +3,7 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken=process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken:mapToken });
 module.exports.index=async(req,res)=>{
-    const allListings= await Listing.find({});
+    let allListings= await Listing.find({});
     res.render("listings/index.ejs",{ allListings }); 
 };
 module.exports.renderNewForm=async (req,res)=>{
@@ -46,6 +46,11 @@ module.exports.createListing=async(req,res,next)=>{
          req.flash("success","new listing created");
          res.redirect("/listings");
  };
+ module.exports.showsearchlisting=async(req,res)=>{
+    let { title }=req.query;
+    let allListings=await Listing.find({title:title});
+    res.render("listings/index.ejs",{allListings});
+ }
  module.exports.updateListing=async(req,res)=>{
     let { id }= req.params;
     let listing=await Listing.findByIdAndUpdate(id,{...req.body.listing});
@@ -67,6 +72,7 @@ module.exports.destroyListing=async(req,res)=>{
 };
 module.exports.showlistinggenre=async(req,res)=>{
     let genre=req.query.genre;
-    let genreListing=await Listing.find({genre:genre});
-    res.render("/listings/genre.ejs",{genreListing});
+    let allListings=await Listing.find({genre:genre});
+   res.render("listings/index.ejs",{ allListings });
+  
 };

@@ -7,7 +7,7 @@ module.exports.listingSchema= Joi.object({
         location:Joi.string().required(),
         country:Joi.string().required(),
         image:Joi.string().allow("",null),
-        genre:Joi.string().allow("",null)
+        genre:Joi.string().required()
     }).required()
 });
 module.exports.reviewSchema= Joi.object({
